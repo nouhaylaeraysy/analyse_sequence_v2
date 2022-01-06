@@ -45,16 +45,15 @@ int valid_rna_sequence(char *sequence) {
 
 int translateRnaToProtein(char * sequence, char ** protein)
 {
-    int i = 0;
     int numbis = 0;
     size_t n =  strlen(sequence);
     printf("%s", "Translate RNA to protein... \n");
 
     char *str = (char *)malloc(n*1000);
     str[0] = '\0';
-    while (numbis < n-2) {
-        char codon[3];
-        sprintf(codon, "%.*s", 3, sequence + numbis);
+    while (numbis < n-2 && sequence[numbis] != '\0' && sequence[numbis] != '\n') {
+        char codon[4];
+        sprintf(codon, "%.*s", 3, (sequence + numbis));
 
         if (in_array(ala, 4, codon)) {strcat(str, "ALA");}
         if (in_array(arg, 6, codon)) { strcat(str, "ARG");}

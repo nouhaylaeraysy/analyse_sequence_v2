@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 
     int is_saved = save_sequence(rna_sequence, file_name_protein, MAX_LINE_LENGTH);
     if (is_saved == 1) {
-        printf("%s File is saved in %s %s", GRN, file_name_protein, RESET);
+        printf("%sFile is saved in %s %s", GRN, file_name_protein, RESET);
     }
 
     return 1;

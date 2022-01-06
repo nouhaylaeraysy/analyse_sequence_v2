@@ -13,17 +13,20 @@ int valid_rna_sequence(char *sequence) {
     int is_valid = 1;
     int length = strlen(sequence);
     if (length % 3 != 0) {
-        printf("RNA sequence is invalid length sequence is %d", length);
+        printf("%sRNA sequence is invalid length sequence is %d%s", RED, length, RESET);
         return 0;
     }
 
-    for (int i = 0; sequence[i] != '\0'; ++i) {
+    for (int i = 0; sequence[i] != '\0'  && sequence[i] != '\n' &&  sequence[i] != '\r'; ++i) {
         char c = toupper(sequence[i]);
 
         if (c != 'A' && c != 'C' && c != 'G' && c != 'U') {
             is_valid = 0;
             break;
         }
+    }
+    if(is_valid == 0){
+        return 0;
     }
 
     if (
@@ -33,7 +36,7 @@ int valid_rna_sequence(char *sequence) {
             ) {
         return 1;
     } else {
-        printf("RNA codon code is invalid \n");
+        printf("%sRNA codon code is invalid %s\n", RED, RESET);
         return 0;
     }
 
@@ -47,7 +50,7 @@ int translateRnaToProtein(char * sequence, char ** protein)
     size_t n =  strlen(sequence);
     printf("%s", "Translate RNA to protein... \n");
 
-    char *str=(char *)malloc(n*1000);
+    char *str = (char *)malloc(n*1000);
     str[0] = '\0';
     while (numbis < n-2) {
         char codon[3];
@@ -77,7 +80,6 @@ int translateRnaToProtein(char * sequence, char ** protein)
         if (in_array(stop, 3, codon)) { break; }
 
         numbis +=3;
-        printf("\rIn progress %d", i/100);
     }
     *protein = str;
 

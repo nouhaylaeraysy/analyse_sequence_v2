@@ -39,8 +39,6 @@ int valid_rna_sequence(char *sequence) {
         printf("%sRNA codon code is invalid %s\n", RED, RESET);
         return 0;
     }
-
-    return is_valid;
 }
 
 int translateRnaToProtein(char * sequence, char ** protein)

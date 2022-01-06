@@ -20,13 +20,13 @@ Compiler par module
 ---------------------
 
 ***A. Module transcription***
-   + make transcription
+   + make transcription_build
 
 ***B. Recherche sequence***
-   + make recherche
+   + make recherche_build
 
 ***C. Traduction***
-   + make translation
+   + make translation_build
 
 ***D. calcule score***
    + make calculescore

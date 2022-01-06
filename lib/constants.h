@@ -1,6 +1,6 @@
-#define NEC_C  "T"
+#define NEC_T  "T"
 #define NEC_U  "U"
-#define RNA_SEQUENCE_FILE  "/var/www/adn/sequence-rna%ld.txt"
+#define RNA_SEQUENCE_FILE  "/var/www/a/sequence-rna%ld.txt"
 #define PROTEIN_SEQUENCE_FILE  "/var/www/adn/protein-rna%ld.txt"
 #define MAX_CONDON_SEQUENCE_FILE  "/var/www/adn/output_seq_codante_%ld.txt"
 #define MAX_LINE_LENGTH 80

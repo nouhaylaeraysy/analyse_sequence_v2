@@ -38,20 +38,22 @@ int checkIfFileExists(char * filePath)
     return is_valid;
 }
 
-int get_path_from_user(char ** filePath, char * message)
+void get_path_from_user(char ** filePath, char * message)
 {
+    // init tmp variable
     char *v = (char*) malloc(128 * sizeof(char));
+
     printf("%s",message);
     scanf("%s", v);
 
+    // vérification si le fichier existe et fichier valid (txt ou sec)
     while (checkIfFileExists(v) == 0)
     {
         printf("%s",message);
         scanf("%s",v);
     }
-    *filePath = v;
 
-    return 1;
+    *filePath = v;
 
 }
 
@@ -94,26 +96,25 @@ void extract_sequence(char * filename, char ** sequence) {
 
 }
 
-int save_sequence(char * data, char * filePath, int max_line_length) {
+int save_sequence(char * sequence, char * filePath, int max_line_length) {
     char *filename = filePath;
-    // open the file for writing
 
-    FILE *fp = fopen(filename, "w");
+    // open the file for writing
+    FILE *fp = fopen(filename, "w"); //ouverir le fichier en écriture
     if (fp == NULL) {
-        printf("Error opening the file %s", filename);
+        printf("%sError opening the file %s %s\n", RED, filename, RESET);
         return -1;
     }
 
     if(max_line_length > 0)
     {
         int i,j =0;
-        for(i = 0; i < strlen(data) && data[i] != '\0'; ++i)
+        for(i = 0; i < strlen(sequence) && sequence[i] != '\0'; ++i)
         {
 
             if(j < max_line_length || i == 0) {
                 j++;
-                printf("%c", data[i]);
-                fprintf(fp, "%c", data[i]);
+                fprintf(fp, "%c", sequence[i]);
             } else {
 
                 if( i > 0 && j == max_line_length) {
@@ -123,7 +124,7 @@ int save_sequence(char * data, char * filePath, int max_line_length) {
             }
         }
     } else{
-        fputs(data, fp);
+        fputs(sequence, fp);
     }
 
     // close the file

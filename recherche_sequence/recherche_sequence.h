@@ -85,7 +85,7 @@ char * getCodonSequence(char *D, int start, int end) {
         str[0] = '\0';
 
         for(i = start; i < end; i++) {
-            char codon[1];
+            char codon[2];
             sprintf(codon, "%.*s", 1, D+i);
             strcat(str, codon);
         }

@@ -30,6 +30,8 @@ int main() {
             ident[i] = '-';
         }
     }
+
+    // int p varible
     float p;
     p = (countIdent / (countSeq-1))*100;
 
